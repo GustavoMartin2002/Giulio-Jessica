@@ -1,0 +1,26 @@
+@import "tailwindcss";
+
+:root {
+  --background: #E1EDEC;
+  --foreground: #252525;
+  --color-white: #E1EDEC;
+  --color-puce: #CFADAF;
+  --color-rose: #7C5A66;
+}
+
+@theme inline {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --font-rouge-scrpit: var(--font-rouge-scrpit);
+  --font-roboto-mono: var(--font-roboto-mono);
+}
+
+*{
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  background: var(--background);
+  color: var(--foreground);
+}
