@@ -8,7 +8,7 @@ const robotoMono = localFont({
   variable: '--font-roboto-mono',
 });
 
-const rougeScript = localFont({
+export const rougeScript = localFont({
   src: '../public/fonts/rougeScript.ttf',
   variable: '--font-rouge-scrpit',
 });
