@@ -1,98 +1,101 @@
 "use client";
 
 import { useForm, SubmitHandler } from "react-hook-form";
-
-interface FormInput {
-  name: string;
-  numberTel: string;
-  guest: string;
-  message: string;
-}
+import { FormInput } from "../models/formInput";
+import { useGoogleForms } from "../hooks/useGoogleForms";
 
 export default function Form() {
-  const { register, handleSubmit, formState: { errors } } = useForm<FormInput>();
+  const { register, handleSubmit, reset, formState: { errors } } = useForm<FormInput>();
+  const { isSubmitting, submit } = useGoogleForms();
 
-  const onSubmit: SubmitHandler<FormInput> = (data) => {
-    console.log(data);
-    alert("Presença confirmada! Obrigado.");
+  const onSubmit: SubmitHandler<FormInput> = async (data) => {
+    await submit(data);
+    reset();
   };
 
   return (
     <form 
       onSubmit={handleSubmit(onSubmit)}
-      className="flex flex-col justify-center items-center gap-5 py-10 px-100"
+      className="w-[35%] flex flex-col justify-center items-center gap-5
+      max-2xl:w-[40%] max-xl:w-[50%] max-lg:w-[60%] max-lg:text-xs max-md:w-[70%] max-sm:w-full"
     >
-      {errors.name && <span className="text-start text-red-500 text-sm">{errors.name.message}</span>}
-      {errors.numberTel && <span className="text-start text-red-500 text-sm">{errors.numberTel.message}</span>}
-      {errors.guest && <span className="text-start text-red-500 text-sm">{errors.guest.message}</span>}
-      
+      { errors.name && <p className="mr-auto text-third">{errors.name.message}</p> }
+      { errors.numberTel && <p className="mr-auto text-third">{errors.numberTel.message}</p> }
+      { errors.guest && <p className="mr-auto text-third">{errors.guest.message}</p> }
+      { errors.message && <p className="mr-auto text-third">{errors.message.message}</p> }
       <input
         type="text"
         {...register("name", {
-          required: "O nome completo é obrigatório.",
+          required: "* O nome completo é obrigatório.",
           minLength: {
             value: 3,
-            message: "O nome deve ter pelo menos 3 caracteres.",
+            message: "* O nome deve ter pelo menos 3 caracteres.",
           },
           maxLength: {
             value: 50,
-            message: "O nome não pode exceder 50 caracteres.",
+            message: "* O nome não pode exceder 50 caracteres.",
           },
           pattern: {
             value: /^[A-Za-zÀ-ÖØ-öø-ÿ\s]+$/,
-            message: "O nome deve conter apenas letras e espaços.",
+            message: "* O nome deve conter apenas letras e espaços.",
           }
         })}
         placeholder="Nome Completo*"
-        className="w-[50%] p-4 bg-gray-300 rounded-sm focus:outline-none placeholder:text-gray-600"
+        className="w-full p-4 bg-gray-300 rounded-sm focus:outline-none placeholder:text-gray-600"
       />
 
       <input
         type="tel"
         {...register("numberTel", { 
-          required: "O número de telefone é obrigatório.",
+          required: "* O número de telefone é obrigatório.",
           minLength: {
             value: 8,
-            message: "O telefone deve ter no mínimo 8 dígitos.",
+            message: "* O telefone deve ter no mínimo 8 dígitos.",
           },
           maxLength: {
             value: 11,
-            message: "O telefone deve ter no máximo 11 dígitos.",
+            message: "* O telefone deve ter no máximo 11 dígitos.",
           },
           pattern: {
             value: /^\d+$/,
-            message: "O telefone só pode conter números.",
+            message: "* O telefone só pode conter números.",
           },
         })}
         placeholder="Número de Telefone*"
-        className="w-[50%] p-4 bg-gray-300 rounded-sm focus:outline-none placeholder:text-gray-600"
+        className="w-full p-4 bg-gray-300 rounded-sm focus:outline-none placeholder:text-gray-600"
       />
 
       <select
         {...register("guest", { 
-          required: "Por favor, selecione o número de convidados.",
+          required: "* Selecione o número de convidados.",
         })}
-        defaultValue={""}
-        className="w-[50%] p-4 bg-gray-300 rounded-sm focus:outline-none placeholder:text-gray-600"
+        className="w-full p-4 bg-gray-300 rounded-sm focus:outline-none placeholder:text-gray-600"
+        defaultValue=""
       >
-        <option disabled selected value={""}>Número de convidados</option>
+        <option disabled value="">Número de convidados</option>
         <option value="0">Nenhum</option>
         <option value="1">1</option>
         <option value="2">2</option>
       </select>
-
+      
       <textarea
-        {...register("message", { maxLength: 300 })}
+        {...register("message", { 
+          maxLength: {
+            value: 400,
+            message: "* A mensagem deve ter no máximo 400 caracteres.",
+          },
+        })}
         placeholder="Mensagem (opcional)"
-        className="w-[50%] p-4 bg-gray-300 rounded-sm focus:outline-none placeholder:text-gray-600"
+        className="w-full p-4 bg-gray-300 rounded-sm focus:outline-none placeholder:text-gray-600"
         rows={6}
       ></textarea>
 
       <button
         type="submit"
-        className="w-[50%] py-3 bg-rose text-white font-bold rounded-lg shadow-md cursor-pointer transition-transform transform hover:scale-105"
+        className="w-full py-3 bg-primary text-white font-bold rounded-lg shadow-md cursor-pointer transition-transform transform select-none hover:scale-105"
+        disabled={isSubmitting}
       >
-        Confirmar Presença
+        { isSubmitting ? "Enviando..." : "Confirmar Presença" }
       </button>
     </form>
   );

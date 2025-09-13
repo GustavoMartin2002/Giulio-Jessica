@@ -13,30 +13,32 @@ export const rougeScript = localFont({
   variable: '--font-rouge-scrpit',
 });
 
-export const metadata: Metadata = {
+const metadata: Metadata = {
   title: "Giulio & Jessica | Nosso Casamento",
-
   description: "Seja bem-vindo(a) ao site de casamento de Giulio & Jessica! Encontre informações sobre a data, localização, confirme sua presença e descubra como nos presentear. Juntos para sempre!",
-
-  keywords: ["casamento", "giulio e jessica", "giulio", "jessica", "site de casamento", "convite digital", "confirmação de presença", "rsvp", "lista de presentes", "pix casamento", "cerimônia", "recepção", "amor", "uniao"],
-
+  keywords: ["casamento", "giulio e jessica", "giulio", "jessica", "site de casamento", "convite digital", "confirmação de presença", "lista de presentes", "pix casamento", "cerimônia", "recepção", "amor", "uniao"],
   openGraph: {
     title: "Giulio & Jessica | Nosso Casamento",
     description: "Convidamos você a celebrar o amor de Giulio & Jessica. Todas as informações para o nosso Grande Dia estão aqui!",
-    url: "https://giulio&jessica.vercel.app",
-    siteName: "Casamento Giulio & Jessica",
+    url: `${process.env.NEXT_PUBLIC_BASE_URL}`,
+    siteName: "Casamento de Giulio & Jessica",
+    type: "website",
+    locale: "pt_BR",
     images: [
       {
-        url: "https://giulio&jessica.vercel.app/og-image.jpg",
+        url: `${process.env.NEXT_PUBLIC_BASE_URL}/favicon.webp`,
         width: 1200,
         height: 630,
-        alt: "Giulio e Jessica - Foto de Casamento",
+        alt: "Casamento",
       },
     ],
-    locale: "pt_BR",
-    type: "website",
   },
-
+  twitter: {
+    card: "summary_large_image",
+    title: "Casamento | Giulio & Jessica",
+    description:"Convidamos você a celebrar o amor de Giulio & Jessica. Todas as informações para o nosso Grande Dia estão aqui!",
+    images: [`${process.env.NEXT_PUBLIC_BASE_URL}/favicon.webp`],
+  },
   authors: [{ name: "Giulio & Jessica" }],
 };
 
