@@ -1,4 +1,5 @@
-import { rougeScript } from "../layout";
+import { rougeScript } from "../utils/fonts"
+import GuestManual from "./GuestManual";
 
 export default function Details() {
   return (
@@ -20,7 +21,7 @@ export default function Details() {
             height="40"
             fill="currentColor"
             className="w-[10%] h-full text-white bg-primary p-2 rounded-l-lg border-1 border-r-0 border-[rgba(0,0,0,0.1)]
-            max-md:w-[15%] max-sm:w-[20%]"
+            max-md:w-[15%] max-sm:w-[18%]"
             viewBox="0 0 16 16"
           >
             <path d="M4 .5a.5.5 0 0 0-1 0V1H2a2 2 0 0 0-2 2v1h16V3a2 2 0 0 0-2-2h-1V.5a.5.5 0 0 0-1 0V1H4zM16 14V5H0v9a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2m-5.146-5.146-3 3a.5.5 0 0 1-.708 0l-1.5-1.5a.5.5 0 0 1 .708-.708L7.5 10.793l2.646-2.647a.5.5 0 0 1 .708.708"/>
@@ -28,7 +29,7 @@ export default function Details() {
           <p
             className="w-full h-full place-content-center bg-gray-200 rounded-r-lg border-1 border-l-0 border-[rgba(0,0,0,0.1)]"
           >
-            04/10/2025
+            Dia 4 de outubro de 2025
           </p>
         </li>
 
@@ -39,7 +40,7 @@ export default function Details() {
             height="40"
             fill="currentColor"
             className="w-[10%] h-full text-white bg-primary p-2 rounded-l-lg border-1 border-r-0 border-[rgba(0,0,0,0.1)]
-            max-md:w-[15%] max-sm:w-[20%]"
+            max-md:w-[15%] max-sm:w-[18%]"
             viewBox="0 0 16 16"
           >
             <path d="M8 16s6-5.686 6-10A6 6 0 0 0 2 6c0 4.314 6 10 6 10m0-7a3 3 0 1 1 0-6 3 3 0 0 1 0 6"/>
@@ -50,18 +51,20 @@ export default function Details() {
         <li className="w-full h-[60px] flex items-center rounded-lg shadow-lg max-sm:h-[50px]">
           <svg
             xmlns="http://www.w3.org/2000/svg"
-            width=""
-            height=""
+            width="40"
+            height="40"
             fill="currentColor" 
             className="w-[10%] h-full text-white bg-primary p-2 rounded-l-lg border-1 border-r-0 border-[rgba(0,0,0,0.1)]
-            max-md:w-[15%] max-sm:w-[20%]" 
+            max-md:w-[15%] max-sm:w-[18%]" 
             viewBox="0 0 16 16"
           >
             <path d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0M8 3.5a.5.5 0 0 0-1 0V9a.5.5 0 0 0 .252.434l3.5 2a.5.5 0 0 0 .496-.868L8 8.71z"/>
           </svg>
-          <p className="w-full h-full place-content-center bg-gray-200 rounded-r-lg border-1 border-l-0 border-[rgba(0,0,0,0.1)]">16:00</p>  
+          <p className="w-full h-full place-content-center bg-gray-200 rounded-r-lg border-1 border-l-0 border-[rgba(0,0,0,0.1)]">As 16:00 horas</p>  
         </li>
       </ul>
+
+      <GuestManual/>
 
       <iframe
         className="shadow-lg rounded-lg select-none
@@ -72,7 +75,7 @@ export default function Details() {
         allowFullScreen
         loading="lazy"
         referrerPolicy="no-referrer-when-downgrade"
-      ></iframe>
+      ></iframe>    
     </section>
   );
 }

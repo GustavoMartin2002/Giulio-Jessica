@@ -1,18 +1,18 @@
 import Image from "next/image"
-import { rougeScript } from "../layout"
+import { rougeScript } from "../utils/fonts"
 import Form from "./Form"
 
 export default function AttendanceForm() {
   return (
     <section className="bg-black relative w-full min-h-screen flex flex-col items-center justify-center px-5 py-25 z-10 max-lg:py-15">
       <Image
-        src="/form.jpg"
+        src="/form.webp"
         alt="form.webp"
         fill={true}
         quality={100}
         priority={true}
         sizes="100vw"
-        className="-z-10 object-center object-cover opacity-50 mask-radial-from-10% pointer-events-none select-none"
+        className="-z-10 object-center object-cover opacity-40 mask-radial-from-10% contrast-125 pointer-events-none select-none"
       />
       <hgroup>
         <h2

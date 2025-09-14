@@ -1,9 +1,7 @@
-"use client";
-
 import Image from "next/image";
 import Link from "next/link";
-import { rougeScript } from "../layout";
-import Swal from "sweetalert2";
+import { rougeScript } from "../utils/fonts"
+import ButtonPix from "./ButtonPix";
 
 export default function GiftList() {
   return (
@@ -15,13 +13,13 @@ export default function GiftList() {
         Lista de Presentes
       </h2>
       <p
-        className="text-xl italic font-light text-center w-[50%]
+        className="text-xl font-light text-center w-[50%]
         max-2xl:w-[60%] max-xl:w-[70%] max-xl:text-lg max-lg:w-[80%] max-lg:text-base max-md:w-[90%] max-md:text-sm max-sm:w-full max-sm:text-xs"
       >
-        Se você deseja nos presentear, ficaremos muito felizes em receber sua contribuição através do PIX ou em nossa lista de presentes.
+        Ficaremos muito felizes em receber sua contribuição através do PIX ou em nossa lista de presentes.
       </p>
       <hgroup
-        className="w-[50%] flex justify-between items-center gap-10 mt-10 p-5 bg-gray-200 border-1 border-[rgba(0,0,0,0.1)] shadow-xl/10 rounded-lg
+        className="w-[50%] flex justify-between items-center gap-10 mt-7 p-5 bg-gray-200 border-1 border-[rgba(0,0,0,0.1)] shadow-xl/10 rounded-lg
         max-2xl:w-[60%] max-xl:w-[80%] max-lg:w-full max-lg:mt-5 max-md:flex-col max-md:py-10 max-sm:p-5"
       >
         <ul className="w-full flex flex-col justify-center items-center">
@@ -47,22 +45,8 @@ export default function GiftList() {
               <span className="text-gray-900">Mercado Pago</span>
             </li>
           </ul>
-         
-          <button
-            onClick={() => {
-              navigator.clipboard.writeText("jessicdias27@gmail.com")
-              Swal.fire({
-                color: "#000",
-                text: "Copiado para área de transferência.",
-                icon: "success",
-                confirmButtonText: "Fechar",
-                confirmButtonColor: "#fd7597",
-              })
-            }}
-            className="w-full mt-10 py-3 bg-primary text-white text-shadow-sm font-bold rounded-lg shadow-md cursor-pointer transition-transform hover:scale-105 select-none max-md:text-xs max-sm:mt-5"
-          >
-            Copiar Chave Pix
-          </button>
+
+          <ButtonPix pix={"jessicdias27@gmail.com"} />
           
           <Link
             className="w-full mt-7 py-3 bg-primary text-center text-white text-shadow-sm font-bold rounded-lg shadow-md cursor-pointer transition-transform hover:scale-105 select-none max-md:text-xs max-lg:mt-5"
@@ -73,7 +57,7 @@ export default function GiftList() {
         </ul>
         <figure className="w-full h-[400px] relative max-sm:h-[200px]">        
           <Image
-            src={"/pix.png"}
+            src={"/pix.webp"}
             alt={"qrcode do pix"}
             fill={true}
             priority={true}

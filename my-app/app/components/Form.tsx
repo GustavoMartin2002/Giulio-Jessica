@@ -9,9 +9,8 @@ export default function Form() {
   const { isSubmitting, submit } = useGoogleForms();
 
   const onSubmit: SubmitHandler<FormInput> = async (data) => {
-    await submit(data);
-    reset();
-  };
+    await submit(data, reset);
+  }
 
   return (
     <form 
@@ -75,7 +74,6 @@ export default function Form() {
         <option disabled value="">Número de convidados</option>
         <option value="0">Nenhum</option>
         <option value="1">1</option>
-        <option value="2">2</option>
       </select>
       
       <textarea
