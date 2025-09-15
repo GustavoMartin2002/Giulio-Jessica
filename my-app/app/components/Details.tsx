@@ -3,7 +3,7 @@ import GuestManual from "./GuestManual";
 
 export default function Details() {
   return (
-    <section className="min-h-[50vh] flex flex-col justify-start items-center mx-5 my-25 gap-10 max-lg:my-15">
+    <section id="details" className="min-h-[50vh] flex flex-col justify-start items-center mx-5 my-25 gap-10 max-lg:my-15">
       <h2
         className={`${rougeScript.className} text-6xl
         max-xl:text-5xl max-lg:text-4xl`}

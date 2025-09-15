@@ -3,7 +3,7 @@ import Carousel from "./Carousel";
 
 export default function Welcome() {
   return (
-    <section className="min-h-screen flex flex-col justify-center items-center mx-5 my-25 gap-5 drop-shadow-2xl max-lg:my-15">
+    <section id="welcome" className="min-h-screen flex flex-col justify-center items-center mx-5 my-25 gap-5 drop-shadow-2xl max-lg:my-15">
       <hgroup className="w-full flex flex-col gap-10 max-lg:gap-5">
         <h2
           className={`${rougeScript.className} text-6xl text-center

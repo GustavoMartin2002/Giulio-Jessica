@@ -4,7 +4,7 @@ import Form from "./Form"
 
 export default function AttendanceForm() {
   return (
-    <section className="bg-black relative w-full min-h-screen flex flex-col items-center justify-center px-5 py-25 z-10 max-lg:py-15">
+    <section id="form" className="bg-black relative w-full min-h-screen flex flex-col items-center justify-center px-5 py-25 z-10 max-lg:py-15">
       <Image
         src="/form.webp"
         alt="form.webp"
